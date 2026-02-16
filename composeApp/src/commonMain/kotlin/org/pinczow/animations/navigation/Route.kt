@@ -11,7 +11,7 @@ sealed interface Route {
     }
 
     @Serializable
-    data class Animation(val name: String): Route, NavKey
+    data class Animation(val id: Long): Route, NavKey
 }
 
 

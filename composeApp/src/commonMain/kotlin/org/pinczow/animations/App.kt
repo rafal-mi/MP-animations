@@ -21,16 +21,19 @@ import org.jetbrains.compose.resources.painterResource
 import animations.composeapp.generated.resources.Res
 import animations.composeapp.generated.resources.compose_multiplatform
 import org.pinczow.animations.navigation.NavigationRoot
+import org.pinczow.animations.screens.LocalPadding
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
         Scaffold { innerPadding ->
-            NavigationRoot(
-                modifier = Modifier
-                    .padding(innerPadding)
-            )
+            CompositionLocalProvider(LocalPadding provides innerPadding) {
+                NavigationRoot(
+                    modifier = Modifier
+                        .padding(innerPadding)
+                )
+            }
         }
     }
 }

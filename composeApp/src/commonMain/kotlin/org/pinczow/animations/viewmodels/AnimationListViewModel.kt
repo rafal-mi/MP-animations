@@ -4,24 +4,15 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import org.pinczow.animations.animations.Animation01
+import org.pinczow.animations.animations.Animation02
 import org.pinczow.animations.model.Animation
+import org.pinczow.animations.repository.AnimationRepository
 
-class AnimationListViewModel: ViewModel() {
+class AnimationListViewModel(
+    private val animationRepository: AnimationRepository
+): ViewModel() {
     private val _animations = MutableStateFlow(
-        listOf(
-            Animation(
-                id = 1L,
-                name = "Animation 1",
-                description = "Description 1",
-                implementation = { Animation01() }
-            ),
-            Animation(
-                id = 2L,
-                name = "Animation 1",
-                description = "Description 2",
-                implementation = { Animation01() }
-            )
-        )
+        animationRepository.animations
     )
 
     val animations = _animations.asStateFlow()

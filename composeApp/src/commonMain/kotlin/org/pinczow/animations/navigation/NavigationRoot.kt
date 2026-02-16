@@ -44,13 +44,13 @@ fun NavigationRoot(
             entry<Route.AnimationList> {
                 AnimationListScreen(
                     onAnimationSelected = {
-                        backStack.add(Route.Animation(it))
+                        backStack.add(Route.Animation(id = it))
                     }
                 )
             }
             entry<Route.Animation> {
                 AnimationScreen(
-                    name = it.name
+                    id = it.id
                 )
             }
         }
