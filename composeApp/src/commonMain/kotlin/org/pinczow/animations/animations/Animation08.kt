@@ -67,7 +67,7 @@ fun Animation08() {
                     .padding(all = 8.dp)
             ) {
                 Row() {
-                    Text("#2")
+                    Text("#8")
                 }
                 Row() {
                     AnimatedVisibility(

@@ -11,6 +11,7 @@ import org.pinczow.animations.animations.Animation08
 import org.pinczow.animations.animations.Animation09
 import org.pinczow.animations.animations.Animation10
 import org.pinczow.animations.animations.Animation11
+import org.pinczow.animations.animations.Animation12
 import org.pinczow.animations.model.Animation
 
 class AnimationRepositoryImpl: AnimationRepository {
@@ -81,6 +82,12 @@ class AnimationRepositoryImpl: AnimationRepository {
                 name = "Animation 11",
                 description = "Description 11",
                 implementation = { Animation11() }
+            ),
+            Animation(
+                id = 12L,
+                name = "Animation 12",
+                description = "Description 12",
+                implementation = { Animation12() }
             ),
         )
 }

@@ -59,7 +59,9 @@ fun Animation01() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             LinearProgressIndicator(
-                modifier = Modifier.weight(1f, fill = true),
+                modifier = Modifier
+                    .weight(1f, fill = true)
+                ,
                 progress = { 0.66f }
             )
             AnimatedVisibility(
@@ -87,7 +89,7 @@ fun Animation01() {
             ) {
                 Button(
                     modifier = Modifier
-                    .height(40.dp)
+                    //.height(40.dp)
                     ,
                     onClick = {  }
                 ) {
