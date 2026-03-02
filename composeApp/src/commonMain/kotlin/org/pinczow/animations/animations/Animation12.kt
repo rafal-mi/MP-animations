@@ -7,9 +7,12 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkHorizontally
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -93,69 +96,100 @@ fun Animation12() {
         ,
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.dp),
     ) {
-        Row(
+        Column(
             modifier = Modifier
-                .height(80.dp)
-                //.height(IntrinsicSize.Min)
-//                .wrapContentSize()
-//                .fillMaxWidth()
-            ,
-            // horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically
+                .fillMaxWidth()
+                .padding(all = 8.dp)
         ) {
-            LinearProgressIndicator(
-                modifier = Modifier
-                    .weight(1f, fill = true)
-                    .padding(start = 8.dp, end = 8.dp)
-                ,
-                progress = { 0.75f }
-            )
-            AnimatedVisibility(
-                visible = expanded,
-                enter = expandHorizontally(
-                    expandFrom = Alignment.End,
-                    animationSpec = tween(
-                        durationMillis = duration,
-                        easing = FastOutLinearInEasing,
+            Row() {
+                Text("#12")
+            }
+            Row() {
+                AnimatedVisibility(
+                    visible = expanded,
+                    enter = expandVertically(
+                        expandFrom = Alignment.Top,
+                        animationSpec = tween(
+                            durationMillis = duration,
+                            easing = FastOutLinearInEasing,
+                        )
+                    ),
+                    exit = shrinkVertically(
+                        shrinkTowards = Alignment.Top,
+                        animationSpec = tween(
+                            durationMillis = duration,
+                            easing = FastOutLinearInEasing,
+                        )
                     )
-                ) /*+ expandVertically(
-                expandFrom = Alignment.Top,
-                animationSpec = tween(
-                    durationMillis = duration,
-                    easing = FastOutLinearInEasing,
-                )
-            )*/,
-                exit = shrinkHorizontally(
-                    shrinkTowards = Alignment.End,
-                    animationSpec = tween(
-                        durationMillis = duration,
-                        easing = FastOutLinearInEasing,
-                    )
-                )
-            ) {
-                Box(
-                    modifier = Modifier
-                    ,
-
-                    contentAlignment = Alignment.Center
-
                 ) {
-                    Button(
+                    Box(
                         modifier = Modifier
-                            .graphicsLayer {
-                                scaleX = buttonScaleX
-                                scaleY = buttonScaleY
-                            }
-                        ,
-                        onClick = {}
+                            .fillMaxWidth()
+                            .height(80.dp)
+                    )
+                }
+            }
+            Row(
+                modifier = Modifier
+                    .height(80.dp)
+                //.height(IntrinsicSize.Min)
+                //                .wrapContentSize()
+                //                .fillMaxWidth()
+                ,
+                // horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .weight(1f, fill = true)
+                        .padding(start = 8.dp, end = 8.dp),
+                    progress = { 0.75f }
+                )
+                AnimatedVisibility(
+                    visible = expanded,
+                    enter = expandHorizontally(
+                        expandFrom = Alignment.End,
+                        animationSpec = tween(
+                            durationMillis = duration,
+                            easing = FastOutLinearInEasing,
+                        )
+                    ) /*+ expandVertically(
+                    expandFrom = Alignment.Top,
+                    animationSpec = tween(
+                        durationMillis = duration,
+                        easing = FastOutLinearInEasing,
+                    )
+                )*/,
+                    exit = shrinkHorizontally(
+                        shrinkTowards = Alignment.End,
+                        animationSpec = tween(
+                            durationMillis = duration,
+                            easing = FastOutLinearInEasing,
+                        )
+                    )
+                ) {
+                    Box(
+                        modifier = Modifier,
+
+                        contentAlignment = Alignment.Center
+
                     ) {
-                        Text("Click")
+                        Button(
+                            modifier = Modifier
+                                .graphicsLayer {
+                                    scaleX = buttonScaleX
+                                    scaleY = buttonScaleY
+                                },
+                            onClick = {}
+                        ) {
+                            Text("Click")
+                        }
+
                     }
 
                 }
 
             }
-
         }
     }
 
