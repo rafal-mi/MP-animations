@@ -71,9 +71,7 @@ fun Animation12() {
 
     val buttonScaleX by animateFloatAsState(
         targetValue = if(expanded) 1.0f else 0.0f,
-        animationSpec = tween(
-            durationMillis = duration
-        )
+        animationSpec = animationSpec
     )
     val buttonScaleY by animateFloatAsState(
         targetValue = if(expanded) 1.0f else 0.0f,
@@ -108,6 +106,7 @@ fun Animation12() {
             LinearProgressIndicator(
                 modifier = Modifier
                     .weight(1f, fill = true)
+                    .padding(start = 8.dp, end = 8.dp)
                 ,
                 progress = { 0.75f }
             )
@@ -136,10 +135,6 @@ fun Animation12() {
             ) {
                 Box(
                     modifier = Modifier
-                        .graphicsLayer {
-                            scaleX = buttonScaleX
-                            scaleY = buttonScaleY
-                        }
                     ,
 
                     contentAlignment = Alignment.Center
