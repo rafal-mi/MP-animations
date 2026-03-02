@@ -1,6 +1,7 @@
 package org.pinczow.animations.animations
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -72,7 +73,7 @@ fun Animation12() {
         0.035f at (0.900 * duration).toInt()  using LinearEasing
     }
 
-    val buttonScaleX by animateFloatAsState(
+   val buttonScaleX by animateFloatAsState(
         targetValue = if(expanded) 1.0f else 0.0f,
         animationSpec = animationSpec
     )
@@ -105,29 +106,17 @@ fun Animation12() {
                 Text("#12")
             }
             Row() {
-                AnimatedVisibility(
-                    visible = expanded,
-                    enter = expandVertically(
-                        expandFrom = Alignment.Top,
-                        animationSpec = tween(
-                            durationMillis = duration,
-                            easing = FastOutLinearInEasing,
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .animateContentSize(
+                            animationSpec = tween(
+                                durationMillis = duration,
+                                easing = FastOutLinearInEasing,
+                            )
                         )
-                    ),
-                    exit = shrinkVertically(
-                        shrinkTowards = Alignment.Top,
-                        animationSpec = tween(
-                            durationMillis = duration,
-                            easing = FastOutLinearInEasing,
-                        )
-                    )
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(80.dp)
-                    )
-                }
+                        .height(if (expanded) 80.dp else 0.dp)
+                )
             }
             Row(
                 modifier = Modifier
@@ -142,7 +131,7 @@ fun Animation12() {
                 LinearProgressIndicator(
                     modifier = Modifier
                         .weight(1f, fill = true)
-                        .padding(start = 8.dp, end = 8.dp),
+                        .padding(start = 8.dp, end = 48.dp),
                     progress = { 0.75f }
                 )
                 AnimatedVisibility(
