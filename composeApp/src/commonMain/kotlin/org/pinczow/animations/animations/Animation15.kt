@@ -40,7 +40,7 @@ import kotlinx.coroutines.launch
 import org.pinczow.animations.Constants.Companion.duration
 
 @Composable
-fun Animation14() {
+fun Animation15() {
     var expanded by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
@@ -144,7 +144,7 @@ fun Animation14() {
                 // .padding(all = 0.dp)
         ) {
             Row() {
-                Text("#14")
+                Text("#15")
             }
             Row() {
                 AnimatedVisibility(
@@ -186,7 +186,7 @@ fun Animation14() {
                 )
                 Button(
                     modifier = Modifier
-                        .width(buttonWidth.value)
+                        .width(IntrinsicSize.Min)
                         .height(buttonWHeight.value)
                         .padding(horizontal = 8.dp)
                     ,
