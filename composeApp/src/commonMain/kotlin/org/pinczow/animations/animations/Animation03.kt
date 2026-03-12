@@ -8,6 +8,7 @@ import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
@@ -74,13 +75,14 @@ fun Animation03() {
         ) {
             Button(
                 modifier = Modifier
-                    .animateContentSize(
-                        animationSpec = tween(
-                            durationMillis = duration,
-                            easing = FastOutLinearInEasing,
-                        )
-                    )
-                    .height(if (visible) 40.dp else 0.dp)
+//                    .animateContentSize(
+//                        animationSpec = tween(
+//                            durationMillis = duration,
+//                            easing = FastOutLinearInEasing,
+//                        )
+//                    )
+//                    .width(if (visible) 100.dp else 0.dp)
+//                    .height(if (visible) 40.dp else 0.dp)
                 ,
                 onClick = {  }
             ) {

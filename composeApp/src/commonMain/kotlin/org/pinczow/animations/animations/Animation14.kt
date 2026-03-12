@@ -195,9 +195,9 @@ fun Animation14() {
                     Text(
                         modifier = Modifier
                             .graphicsLayer {
-                            scaleX = buttonScaleXTween
-                            scaleY = buttonScaleYTween
-                        }
+                                scaleX = buttonScaleXTween
+                                scaleY = buttonScaleYTween
+                            }
                         ,
                         text = "Click"
                     )
