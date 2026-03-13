@@ -52,15 +52,15 @@ fun Animation01() {
     val scaleX_ by animateFloatAsState(
         targetValue = if(expanded) 1.0f else 0.0f,
         animationSpec = tween(
-            durationMillis = duration,
-            easing = easing,
+            durationMillis = duration * 2,
+            easing = FastOutSlowInEasing,
         )
     )
     val scaleY_ by animateFloatAsState(
         targetValue = if(expanded) 1.0f else 0.0f,
         animationSpec = tween(
-            durationMillis = duration,
-            easing = easing,
+            durationMillis = duration * 4,
+            easing = FastOutSlowInEasing,
         )
     )
 
@@ -126,8 +126,9 @@ fun Animation01() {
             ) {
                 LinearProgressIndicator(
                     modifier = Modifier
-                        //.padding(end = 8.dp)
-                        .weight(1f, fill = true),
+                        .padding(end = 8.dp)
+                        .weight(1f, fill = true)
+                    ,
                     progress = { 0.66f }
                 )
                 AnimatedVisibility(
@@ -153,25 +154,18 @@ fun Animation01() {
                         )
                     )
                 ) {
-                    Box(
+                    Button(
                         modifier = Modifier
-                            .padding(start = 8.dp)
+                            .graphicsLayer {
+                                scaleX = scaleX_
+                                scaleY = scaleY_
+                            }
                         ,
-                        contentAlignment = Alignment.CenterEnd
+                        onClick = { }
                     ) {
-                        Button(
-                            modifier = Modifier
-                                .graphicsLayer {
-                                    scaleX = scaleX_
-                                    scaleY = scaleY_
-                                }
-                            ,
-                            onClick = { }
-                        ) {
-                            Text("Click")
-                        }
-
+                        Text("Click")
                     }
+
                 }
 
             }
